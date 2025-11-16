@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="aruco_tag">
+
+    <static>true</static>
+
+    <link name="aruco_link">
+      <visual name="aruco_visual">
+        <geometry>
+          <mesh>
+            <uri>model://aruco_tag/textures/aruco14.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+  </model>
+</sdf>
+
