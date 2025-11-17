@@ -6,6 +6,7 @@ git clone https://github.com/emanudevito14/iiwa_ros2.git
 Open new tweminal in ros2_ws
 ```
 colcon build
+source install/setup.bash
 ```
 ```
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/ros2_ws/src/iiwa_ros2/iiwa_description/gazebo/models
