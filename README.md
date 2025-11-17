@@ -1,4 +1,4 @@
-Put this repo and [aruco_ros](https://github.com/pal-robotics/aruco_ros)
+Put iiwa_ros2 (updated with aruco_tag) and [aruco_ros](https://github.com/pal-robotics/aruco_ros)
  in ros2_ws/src.
 Open new tweminal in ros2_ws
 ```
