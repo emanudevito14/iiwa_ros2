@@ -14,7 +14,7 @@ export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:~/ros2_ws/src/iiwa_ros2/iiwa_d
 ign gazebo ~/ros2_ws/src/iiwa_ros2/iiwa_description/gazebo/worlds/floating_marker.world
 
 ```
-Open new terminal
+Start Gazebo's simulation (click play simbol in gazebo)   and open new terminal
 ```
 ros2 run ros_gz_bridge parameter_bridge   /stereo_camera/right_link/right_rgb@sensor_msgs/msg/Image@gz.msgs.Image /stereo_camera/right_link/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo   --ros-args -r /stereo_camera/right_link/right_rgb:=/stereo/right/image_rect_color -r /stereo_camera/right_link/camera_info:=/stereo/right/camera_info
 ```
