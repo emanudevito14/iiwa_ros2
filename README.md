@@ -1,5 +1,8 @@
 Put iiwa_ros2 (updated with aruco_tag) and [aruco_ros](https://github.com/pal-robotics/aruco_ros)
  in ros2_ws/src.
+ ```
+git clone https://github.com/emanudevito14/iiwa_ros2.git
+ ```
 Open new tweminal in ros2_ws
 ```
 colcon build
