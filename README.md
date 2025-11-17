@@ -1,4 +1,4 @@
-Put this repo and ![aruco_ros][https://github.com/pal-robotics/aruco_ros] in ros2_ws/src.
+Put this repo and [![aruco_ros][https://github.com/pal-robotics/aruco_ros] in ros2_ws/src.
 Open new tweminal in ros2_ws
 ```
 colcon build
