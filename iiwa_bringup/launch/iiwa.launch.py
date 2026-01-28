@@ -301,17 +301,17 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [PathJoinSubstitution(
-                [FindPackageShare('gazebo_ros'),
-                    'launch', 'gazebo.launch.py']
+                [FindPackageShare('ros_ign_gazebo'),
+                    'launch', 'ign_gazebo.launch.py']
             )]
         ),
-        launch_arguments={'verbose': 'false', 'world': iiwa_simulation_world}.items(),
+        launch_arguments={'gz_args': [' -r -v 1', iiwa_simulation_world]}.items(),
         condition=IfCondition(use_sim),
     )
 
     spawn_entity = Node(
-        package='gazebo_ros',
-        executable='spawn_entity.py',
+        package='ros_gz_sim',
+        executable='create',
         arguments=['-topic', [namespace, 'robot_description'], '-entity', [namespace, 'iiwa14']],
         output='screen',
         condition=IfCondition(use_sim),

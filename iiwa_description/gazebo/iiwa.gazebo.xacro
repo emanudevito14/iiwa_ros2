@@ -4,7 +4,7 @@
 
     <!-- ros_control plugin -->
     <gazebo>
-      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
         <xacro:if value="${namespace != '/'}">
           <ros>
             <namespace>/${namespace[:-1]}</namespace>
