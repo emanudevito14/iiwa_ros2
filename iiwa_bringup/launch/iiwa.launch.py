@@ -295,18 +295,46 @@ def generate_launch_description():
     )
     iiwa_simulation_world = PathJoinSubstitution(
         [FindPackageShare(description_package),
-            'gazebo/worlds', 'empty.world']
+            'gazebo/worlds', 'floating_marker.world']
     )
 
+    
     gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            [PathJoinSubstitution(
-                [FindPackageShare('ros_ign_gazebo'),
-                    'launch', 'ign_gazebo.launch.py']
-            )]
-        ),
-        launch_arguments={'gz_args': [' -r -v 1', iiwa_simulation_world]}.items(),
-        condition=IfCondition(use_sim),
+	    PythonLaunchDescriptionSource(
+		[PathJoinSubstitution(
+		    [FindPackageShare('ros_ign_gazebo'),
+		        'launch', 'ign_gazebo.launch.py']
+		)]
+	    ),
+	    launch_arguments={
+		
+		'gz_args': [
+		    '-r -v 1 ', 
+		    iiwa_simulation_world
+		]
+	    }.items(),
+	    condition=IfCondition(use_sim),
+    )
+    gz_ros_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=[
+            
+          '/world/aruco_stereo_world/model/iiwa/link/link_7/sensor/right_camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
+          '/world/aruco_stereo_world/model/iiwa/link/link_7/sensor/right_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
+          '/world/aruco_stereo_world/set_pose@ros_gz_interfaces/srv/SetEntityPose'
+
+            
+        ],
+        remappings=[
+            
+           
+           ('/world/aruco_stereo_world/model/iiwa/link/link_7/sensor/right_camera/image', '/stereo/right/image_rect_color'),
+           ('/world/aruco_stereo_world/model/iiwa/link/link_7/sensor/right_camera/camera_info', '/stereo/right/camera_info'),
+            
+            
+        ],
+        output='screen'
     )
 
     spawn_entity = Node(
@@ -375,6 +403,7 @@ def generate_launch_description():
 
     nodes = [
         gazebo,
+        gz_ros_bridge,
         control_node,
         iiwa_planning_launch,
         iiwa_servoing_launch,
